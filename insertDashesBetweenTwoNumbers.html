@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>	
+		<title>Insert dashes (-) between even numbers</title>
+			<link rel="stylesheet" href= "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+
+	
+		<style>
+			form{
+				margin:100px;				
+			}
+			
+		</style>	
+	</head>
+	
+	<body>
+		<form>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-2">	
+						<label>Enter the Number:</label>
+					</div>
+					<div class="col-sm-3">	
+						<input type="numbers" name="numbers" maxlength="6" id="numberString">
+					</div>
+					<div class="col-sm-2">
+						<button type="button" class="btn btn-primary btn-sm" onclick="formatNumber()" >Submit</button>				
+					</div>
+				</div>
+				<p id="result"></p>
+			</div>		
+		</form>	
+		
+	</body>
+	
+	<script>	
+		function formatNumber() {
+			const numberString = document.getElementById("numberString").value;
+			
+			var cleaned = ('' + numberString).replace(/\D/g, '');	
+			var match = cleaned.match(/^(\d{1})(\d{3})(\d{1})(\d{1})$/);
+			var result="";	
+			if (match) {
+			document.getElementById("result").innerHTML = [match[1], '-', match[2], '-', match[3], '-', match[4]].join('');
+			}else{
+			document.getElementById("result").innerHTML = null;
+			}
+			console.log(result)
+		}
+	 
+	</script>	
+</html>
